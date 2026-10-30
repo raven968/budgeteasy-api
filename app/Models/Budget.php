@@ -76,6 +76,16 @@ class Budget extends Model
         return $this->hasMany(BudgetInvitation::class);
     }
 
+    public function isOwnedBy(User $user): bool
+    {
+        return $this->owner_id === $user->id;
+    }
+
+    public function hasMember(User $user): bool
+    {
+        return $this->members()->whereKey($user->id)->exists();
+    }
+
     /**
      * Get the attributes that should be cast.
      *

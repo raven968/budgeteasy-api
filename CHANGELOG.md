@@ -16,6 +16,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Password policy: minimum 8 characters with letters and numbers; leaked passwords are rejected in production.
 - Domain schema: `budgets`, `budget_members`, `budget_invitations`, `categories`, `budget_category_limits` and `expenses`, with models, relationships, factories and the `BudgetRole` enum. Money stored as integer cents; category names unique per user (case-insensitive) among active categories.
 - Categories CRUD (`/api/v1/categories`): limit of 10 active categories per user enforced with a row lock, case-insensitive unique names, soft delete; list includes `meta.max`.
+- Budgets CRUD (`/api/v1/budgets`): amounts in cents, supported currencies in `config/budgets.php`, the creator is registered as `owner`; members can view, only the owner can update or delete (soft delete).
+- `GET /api/v1/budgets/{budget}/categories`: the owner's categories, available to every member.
+- Budget members: `GET /api/v1/budgets/{budget}/members`; `DELETE /api/v1/budgets/{budget}/members/{member}` lets the owner remove a member or a member leave. The owner can't be removed.
 - Localization: responses in Spanish (default) or English based on the `Accept-Language` header, returned in `Content-Language`. Spanish translations from Laravel Lang.
 
 ## [0.1.0] - 2026-10-29
