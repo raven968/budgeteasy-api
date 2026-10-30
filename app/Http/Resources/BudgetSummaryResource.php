@@ -2,14 +2,14 @@
 
 namespace App\Http\Resources;
 
-use App\Services\BudgetSummaryService;
+use App\Services\BudgetSummary\BudgetSummary;
+use App\Services\BudgetSummary\CategorySpending;
+use App\Services\BudgetSummary\MemberSpending;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
- * Formats the array produced by BudgetSummaryService::forMonth().
- *
- * @see BudgetSummaryService::forMonth()
+ * @mixin BudgetSummary
  */
 class BudgetSummaryResource extends JsonResource
 {
@@ -20,24 +20,24 @@ class BudgetSummaryResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $summary = $this->resource;
-
         return [
-            'month' => $summary['month']->format('Y-m'),
-            'currency' => $summary['budget']->currency,
-            'budget_amount' => $summary['budget']->amount,
-            'spent_amount' => $summary['spent_amount'],
-            'remaining_amount' => $summary['remaining_amount'],
-            'spent_percentage' => $summary['spent_percentage'],
-            'categories' => $summary['categories']->map(fn (array $row) => [
-                'category' => CategoryResource::make($row['category']),
-                'spent_amount' => $row['spent_amount'],
-                'expenses_count' => $row['expenses_count'],
-                'limit_amount' => $row['limit_amount'],
+            /** @example 2026-10 */
+            'month' => $this->month->format('Y-m'),
+            'currency' => $this->budget->currency,
+            'budget_amount' => $this->budget->amount,
+            'spent_amount' => $this->spent_amount,
+            /** Negative when the budget is exceeded. */
+            'remaining_amount' => $this->remaining_amount,
+            'spent_percentage' => $this->spent_percentage,
+            'categories' => $this->categories->map(fn (CategorySpending $row) => [
+                'category' => CategoryResource::make($row->category),
+                'spent_amount' => $row->spent_amount,
+                'expenses_count' => $row->expenses_count,
+                'limit_amount' => $row->limit_amount,
             ]),
-            'members' => $summary['members']->map(fn (array $row) => [
-                'user' => $row['user'] ? ['id' => $row['user']->id, 'name' => $row['user']->name] : null,
-                'spent_amount' => $row['spent_amount'],
+            'members' => $this->members->map(fn (MemberSpending $row) => [
+                'user' => $row->user ? ['id' => $row->user->id, 'name' => $row->user->name] : null,
+                'spent_amount' => $row->spent_amount,
             ]),
         ];
     }

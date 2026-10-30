@@ -13,6 +13,11 @@ use Spatie\RouteAttributes\Attributes\Prefix;
 #[Prefix('v1/auth')]
 class RegisterController extends Controller
 {
+    /**
+     * Register a new account and get a token for the device.
+     *
+     * @unauthenticated
+     */
     #[Post('register', name: 'v1.auth.register', middleware: 'throttle:auth')]
     public function __invoke(RegisterRequest $request, RegisterUserAction $register_user): JsonResponse
     {

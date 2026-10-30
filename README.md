@@ -18,6 +18,10 @@ php artisan migrate
 herd link budgeteasy   # sirve la API en http://budgeteasy.test
 ```
 
+## Documentación del API
+
+En local: http://budgeteasy.test/docs/api (OpenAPI en `/docs/api.json`). Exportar: `php artisan scramble:export`.
+
 ## Pruebas y formato
 
 ```sh

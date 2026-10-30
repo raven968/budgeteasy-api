@@ -14,6 +14,11 @@ use Spatie\RouteAttributes\Attributes\Prefix;
 #[Prefix('v1/auth')]
 class SessionController extends Controller
 {
+    /**
+     * Log in and get a token for the device.
+     *
+     * @unauthenticated
+     */
     #[Post('login', name: 'v1.auth.login', middleware: 'throttle:auth')]
     public function store(LoginRequest $request, LoginAction $login): AuthTokenResource
     {

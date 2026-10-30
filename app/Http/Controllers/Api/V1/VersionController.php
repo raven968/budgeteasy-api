@@ -10,6 +10,11 @@ use Spatie\RouteAttributes\Attributes\Prefix;
 #[Prefix('v1')]
 class VersionController extends Controller
 {
+    /**
+     * API version and the minimum mobile app version allowed.
+     *
+     * @unauthenticated
+     */
     #[Get('version', name: 'v1.version')]
     public function __invoke(): JsonResponse
     {

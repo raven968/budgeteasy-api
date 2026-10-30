@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expenses: `GET|POST /api/v1/budgets/{budget}/expenses` (members; list filtered by `month`, `category_id`, `user_id`, paginated by 50) and `PUT|DELETE /api/v1/expenses/{expense}` (author or budget owner while still a member). Only active categories of the budget owner are accepted.
 - `GET /api/v1/budgets/{budget}/summary?month=YYYY-MM`: totals, remaining, percentage, per-category spending (with `limit_amount`, ready for per-category limits) and per-member spending.
 - Invitations: `POST /api/v1/budgets/{budget}/invitations` (owner) creates a single-use 6-character code valid for 48 hours and expires the previous pending one; `POST /api/v1/invitations/accept` joins the budget as member (row lock, throttled to 10 attempts per minute).
+- API documentation with Scramble at `/docs/api` (OpenAPI at `/docs/api.json`), available only in the local environment.
 - Categories expose `is_deleted` so past expenses can show a deleted category.
 - Localization: responses in Spanish (default) or English based on the `Accept-Language` header, returned in `Content-Language`. Spanish translations from Laravel Lang.
 
