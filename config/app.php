@@ -82,6 +82,13 @@ return [
 
     'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
 
+    /*
+    | Locales the API can answer in, chosen from the Accept-Language header.
+    | The first one is used when the header matches none of them.
+    */
+
+    'supported_locales' => ['es', 'en'],
+
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
     /*
