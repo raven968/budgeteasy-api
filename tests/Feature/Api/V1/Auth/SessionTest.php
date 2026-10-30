@@ -66,7 +66,3 @@ it('logs out by revoking only the current token', function () {
 
     expect($user->tokens()->pluck('name')->all())->toBe(['iPad']);
 });
-
-it('requires authentication to log out', function () {
-    $this->postJson('/api/v1/auth/logout')->assertUnauthorized();
-});

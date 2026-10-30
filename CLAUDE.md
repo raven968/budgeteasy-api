@@ -17,7 +17,9 @@ REST API (Laravel 13, PHP 8.5, PostgreSQL) for BudgetEasy, a mobile app to track
 - **Routes are declared with `spatie/laravel-route-attributes`** on the controllers. There is no `routes/api.php`. Controllers under `app/Http/Controllers/Api` automatically get the `api` prefix and middleware; each controller adds its version prefix, e.g. `#[Prefix('v1/budgets')]`, and lives in `Api/V1`.
 - **All PHP variables and parameters use `$snake_case`**. Constants use `UPPER_CASE`. Method and class names keep Laravel's standard casing.
 - **The JSON API uses snake_case keys** (requests and responses).
-- Validation in Form Requests; authorization via Policies (called from the Form Request's `authorize()` or `Gate`); responses through API Resources.
+- Validation in Form Requests; responses through API Resources.
+- Authorization via Policies, applied with the `can` middleware in the route attribute (e.g. `middleware: 'can:update,category'`). Form Requests then return `true` from `authorize()`.
+- Tests that assert translated messages must send `Accept-Language` explicitly: the test client defaults to `en-us`.
 - Mobile authentication with Sanctum personal access tokens.
 - Follow Laravel best practices: dependency injection, Enums for fixed values, Eloquent relationships, DB transactions for multi-step writes.
 

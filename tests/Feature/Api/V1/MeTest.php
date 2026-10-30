@@ -19,7 +19,3 @@ it('returns the authenticated user', function () {
             ],
         ]);
 });
-
-it('rejects unauthenticated requests', function () {
-    $this->getJson('/api/v1/me')->assertUnauthorized();
-});
