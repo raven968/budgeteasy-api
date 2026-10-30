@@ -32,6 +32,14 @@ class BudgetPolicy
     }
 
     /**
+     * Only the owner can generate invitation codes.
+     */
+    public function invite(User $user, Budget $budget): bool
+    {
+        return $budget->isOwnedBy($user);
+    }
+
+    /**
      * The owner can remove any member and a member can leave; the owner can't be removed.
      */
     public function removeMember(User $user, Budget $budget, User $member): bool

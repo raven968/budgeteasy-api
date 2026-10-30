@@ -172,6 +172,7 @@ return [
         'body' => 'contenido',
         'category_id' => 'categoría',
         'city' => 'ciudad',
+        'code' => 'código',
         'color' => 'color',
         'company' => 'compañía',
         'compilation' => 'compilación',

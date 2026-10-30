@@ -22,4 +22,6 @@ it('rejects unauthenticated requests to protected routes', function (string $met
     'update expense' => ['PUT', '/api/v1/expenses/1'],
     'delete expense' => ['DELETE', '/api/v1/expenses/1'],
     'budget summary' => ['GET', '/api/v1/budgets/1/summary'],
+    'create invitation' => ['POST', '/api/v1/budgets/1/invitations'],
+    'accept invitation' => ['POST', '/api/v1/invitations/accept'],
 ]);

@@ -6,7 +6,6 @@ use App\Models\Budget;
 use App\Models\BudgetInvitation;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
  * @extends Factory<BudgetInvitation>
@@ -23,7 +22,7 @@ class BudgetInvitationFactory extends Factory
         return [
             'budget_id' => Budget::factory(),
             'created_by' => fn (array $attributes) => Budget::findOrFail($attributes['budget_id'])->owner_id,
-            'code' => Str::upper(Str::random(6)),
+            'code' => BudgetInvitation::generateCode(),
             'expires_at' => now()->addHours(48),
         ];
     }

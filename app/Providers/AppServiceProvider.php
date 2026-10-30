@@ -30,6 +30,10 @@ class AppServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($email.'|'.$request->ip());
         });
 
+        RateLimiter::for('invitations', function (Request $request): Limit {
+            return Limit::perMinute(10)->by((string) $request->user()?->id ?: $request->ip());
+        });
+
         Password::defaults(function (): Password {
             $rule = Password::min(8)->letters()->numbers();
 
