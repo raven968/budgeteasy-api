@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `POST /api/v1/auth/register`: creates a user and returns a Sanctum token for the device.
+- `POST /api/v1/auth/login`: returns a token for the device; throttled to 5 attempts per minute per email and IP.
+- `POST /api/v1/auth/logout`: revokes only the current device token.
+- `GET /api/v1/me`: returns the authenticated user.
+- Password policy: minimum 8 characters with letters and numbers; leaked passwords are rejected in production.
+
 ## [0.1.0] - 2026-10-29
 
 ### Added
