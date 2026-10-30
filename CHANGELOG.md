@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-10-30
+
 ### Added
 
 - `POST /api/v1/auth/register`: creates a user and returns a Sanctum token for the device.
@@ -36,3 +38,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `GET /api/v1/version` endpoint exposing the API version and the minimum supported mobile version.
 - Pest test suite running against PostgreSQL.
 - Laravel Boost (AI guidelines, skills and MCP server) for development.
+
+[Unreleased]: https://github.com/raven968/budgeteasy-api/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/raven968/budgeteasy-api/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/raven968/budgeteasy-api/releases/tag/v0.1.0
