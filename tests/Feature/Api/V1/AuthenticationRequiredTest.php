@@ -17,4 +17,9 @@ it('rejects unauthenticated requests to protected routes', function (string $met
     'budget categories' => ['GET', '/api/v1/budgets/1/categories'],
     'budget members' => ['GET', '/api/v1/budgets/1/members'],
     'remove budget member' => ['DELETE', '/api/v1/budgets/1/members/1'],
+    'list expenses' => ['GET', '/api/v1/budgets/1/expenses'],
+    'create expense' => ['POST', '/api/v1/budgets/1/expenses'],
+    'update expense' => ['PUT', '/api/v1/expenses/1'],
+    'delete expense' => ['DELETE', '/api/v1/expenses/1'],
+    'budget summary' => ['GET', '/api/v1/budgets/1/summary'],
 ]);

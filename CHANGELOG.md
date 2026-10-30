@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Budgets CRUD (`/api/v1/budgets`): amounts in cents, supported currencies in `config/budgets.php`, the creator is registered as `owner`; members can view, only the owner can update or delete (soft delete).
 - `GET /api/v1/budgets/{budget}/categories`: the owner's categories, available to every member.
 - Budget members: `GET /api/v1/budgets/{budget}/members`; `DELETE /api/v1/budgets/{budget}/members/{member}` lets the owner remove a member or a member leave. The owner can't be removed.
+- Expenses: `GET|POST /api/v1/budgets/{budget}/expenses` (members; list filtered by `month`, `category_id`, `user_id`, paginated by 50) and `PUT|DELETE /api/v1/expenses/{expense}` (author or budget owner while still a member). Only active categories of the budget owner are accepted.
+- `GET /api/v1/budgets/{budget}/summary?month=YYYY-MM`: totals, remaining, percentage, per-category spending (with `limit_amount`, ready for per-category limits) and per-member spending.
+- Categories expose `is_deleted` so past expenses can show a deleted category.
 - Localization: responses in Spanish (default) or English based on the `Accept-Language` header, returned in `Content-Language`. Spanish translations from Laravel Lang.
 
 ## [0.1.0] - 2026-10-29

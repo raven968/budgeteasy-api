@@ -23,6 +23,7 @@ class CategoryResource extends JsonResource
             'name' => $this->name,
             'icon' => $this->icon,
             'color' => $this->color,
+            'is_deleted' => $this->trashed(),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
